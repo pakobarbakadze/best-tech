@@ -19,15 +19,15 @@ const productSchema = mongoose.Schema({
         requre: true
     },
     category: {
-        type: string,
+        type: String,
         requre: true,
     },
     description: {
-        type: string,
+        type: String,
         requre: true,
     },
     price: {
-        type: number,
+        type: Number,
         requre: true,
         default: 0
     },
