@@ -1,16 +1,18 @@
-import './App.css'
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import "./App.css";
 
-import Navbar from "./components/Navbar/Navbar";
-import Product from './components/Product/Product';
+import HomePage from "./pages/HomePage";
+import ProductDetailsPage from "./pages/ProductDetailsPage";
 
 const App = () => {
   return (
-    <>
-    <Navbar></Navbar>
-    <Product></Product>
-    <h1>Welcome to best tech</h1>
-    </>
+    <Router>
+      <Routes>
+        <Route path="/" element={<HomePage />}></Route>
+        <Route path='/product/:_id' element={<ProductDetailsPage/>}></Route>
+      </Routes>
+    </Router>
   );
-}
+};
 
 export default App;

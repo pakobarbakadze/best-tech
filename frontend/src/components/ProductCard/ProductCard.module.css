@@ -21,15 +21,16 @@
   margin: 40px auto;
 }
 
-.info h1 {
-    font-size: 14px;
-    font-weight: 700;
-    margin: 10px auto;
+.info a {
+  font-size: 14px;
+  font-weight: 700;
+  margin: 10px auto;
+  text-decoration: none;
 }
 
 .info h2 {
-    font-size: 16px;
-    font-weight: 700;
-    color: #99C99E;
-    margin: auto auto 20px;
+  font-size: 16px;
+  font-weight: 700;
+  color: #99c99e;
+  margin: auto auto 20px;
 }

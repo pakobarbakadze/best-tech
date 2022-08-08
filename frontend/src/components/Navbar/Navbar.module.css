@@ -1,7 +1,7 @@
 .navbar {
     display: flex;
     justify-content: space-between;
-    margin: 40px 15%;
+    margin: 40px 15% 20px;
 }
 
 .logo {
@@ -9,11 +9,12 @@
     width: 220px;
 }
 
-.logo h1 {
+.logo a {
     font-size: 30px;
     font-weight: 600;
     margin: auto 0px;
     margin-left: 5px;
+    text-decoration: none;
 }
 
 .search {
@@ -54,10 +55,11 @@
     justify-content: space-between;
 }
 
-.menu h1 {
+.menu a {
     font-size: 20px;
     padding-left: 20px;
     margin: auto 0px;
+    text-decoration: none;
 }
 
 .menu img {
