@@ -1,15 +1,22 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import axios from "axios"
 
 import classes from "./ProductDetails.module.css";
 
-import products from "../../api/DummyData";
-
 const ProductDetails = () => {
-  const [counter, setCounter] = useState(1);
-
   const { _id } = useParams();
+  const [products, setProducts] = useState()
+  const [counter, setCounter] = useState(1);
   const product = products.find((p) => p._id === _id);
+
+  useEffect(() => {
+    axios.get('/api/products').then((res) =>{
+      setProducts(res)
+    }).catch((e) =>{
+      console.log(e)
+    })
+  }, [])
 
   const decHandler = () => {
     if (counter > 1) {

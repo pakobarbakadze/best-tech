@@ -1,0 +1,33 @@
+{
+  "name": "best-tech",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node backend/server",
+    "server": "nodemon backend/server",
+    "client": "npm start --prefix frontend",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pakobarbakadze/best-tech.git"
+  },
+  "keywords": [],
+  "author": "Kayn",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pakobarbakadze/best-tech/issues"
+  },
+  "homepage": "https://github.com/pakobarbakadze/best-tech#readme",
+  "dependencies": {
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "mongoose": "^6.5.1"
+  },
+  "devDependencies": {
+    "concurrently": "^7.3.0",
+    "nodemon": "^2.0.19"
+  }
+}
