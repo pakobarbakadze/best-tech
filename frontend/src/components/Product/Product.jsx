@@ -1,4 +1,4 @@
-import React,{ useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 import classes from "./Product.module.css";
@@ -6,21 +6,28 @@ import classes from "./Product.module.css";
 import ProductCard from "../ProductCard/ProductCard";
 
 const Product = () => {
-  const [products, setProducts] = useState([])
+  const [data, setData] = useState([]);
 
   useEffect(() => {
-    axios.get('/api/products').then((res) =>{
-      setProducts(res.data)
-    }).catch((e) =>{
-      console.log(e)
-    })
-  })
-  
+    axios
+      .get("/api/products")
+      .then((res) => {
+        setData(res.data);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  }, []); 
+
   return (
     <div className={classes.container}>
-      {products.map((product) => (
-        <ProductCard key={product._id} product={product}></ProductCard>
-      ))}
+      {data.products ? (
+        data.products.map((product) => (
+          <ProductCard key={product._id} product={product}></ProductCard>
+        ))
+      ) : (
+        <h1>loading</h1>
+      )}
     </div>
   );
 };

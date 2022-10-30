@@ -10,10 +10,10 @@ const productSchema = mongoose.Schema({
         type: String,
         requre: true
     },
-    image: {
+    image: [{
         type: String,
         requre: true,
-    },
+    }],
     brand: {
         type: String,
         requre: true

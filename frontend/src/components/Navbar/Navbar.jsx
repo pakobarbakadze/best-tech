@@ -10,18 +10,20 @@ const Navbar = () => {
   return (
     <div className={classes.navbar}>
       <div className={classes.logo}>
-        <Link to='/'><img src={Logo} alt="logo" /></Link>
-        <Link to='/'>Best Tech</Link>
+        <Link to="/">
+          <img src={Logo} alt="logo" />
+        </Link>
+        <Link to="/">Best Tech</Link>
       </div>
       <div className={classes.search}>
         <input placeholder="რას ეძებთ ?"></input>
         <button>ძებნა</button>
       </div>
       <div className={classes.menu}>
-        <Link to="cart">
+        <Link to="/cart">
           <img src={Cart} alt="cart" />
         </Link>
-        <Link to="login">ავტორიზაცია</Link>
+        <Link to="/login">ავტორიზაცია</Link>
       </div>
     </div>
   );
