@@ -1,19 +1,42 @@
 import React, { useState } from "react";
+import axios from "axios";
 
 import classes from "./Register.module.css";
 
 const Register = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
-  const [id, setId] = useState("");
-  const [mail, setMail] = useState("");
+  const [pId, setPId] = useState("");
+  const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
+  const [repeatPassword, setRepeatPassword] = useState("");
 
   const submitHandler = (e) => {
     e.preventDefault();
     console.log("submited");
-    console.log(firstName)
+
+    if (password === repeatPassword) {
+      console.log({ firstName, lastName, pId, email, phone, password });
+
+      axios
+        .post("/api/users", {
+          firstName: firstName,
+          lastName: lastName,
+          pId: pId,
+          email: email,
+          phone: phone,
+          password: password,
+        })
+        .then((res) => {
+          console.log(res);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    } else {
+      console.log("პაროლები არ ემთხვევა");
+    }
   };
 
   return (
@@ -23,7 +46,7 @@ const Register = () => {
         <form className={classes.form} onSubmit={submitHandler}>
           <div className={classes.info}>
             <h2>პირადი ინფორმაცია</h2>
-            <div>
+            <div className={classes.input}>
               <label htmlFor="firstName">სახელი</label>
               <input
                 value={firstName}
@@ -32,7 +55,7 @@ const Register = () => {
                 placeholder="სახელი"
               />
             </div>
-            <div>
+            <div className={classes.input}>
               <label htmlFor="lastName">გვარი</label>
               <input
                 value={lastName}
@@ -41,16 +64,16 @@ const Register = () => {
                 placeholder="გვარი"
               />
             </div>
-            <div>
+            <div className={classes.input}>
               <label htmlFor="id">პირადი ნომერი</label>
               <input
-                value={id}
-                onChange={(e) => setId(e.target.value)}
+                value={pId}
+                onChange={(e) => setPId(e.target.value)}
                 type="text"
                 placeholder="პირადი ნომერი"
               />
             </div>
-            <div>
+            <div className={classes.input}>
               <label htmlFor="firstName">ტელეფონი</label>
               <input
                 value={phone}
@@ -63,16 +86,16 @@ const Register = () => {
 
           <div className={classes.login}>
             <h2>ავტორიზაცია</h2>
-            <div>
+            <div className={classes.input}>
               <label htmlFor="firstName">ელ. ფოსტა</label>
               <input
-                value={mail}
-                onChange={(e) => setMail(e.target.value)}
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 type="mail"
                 placeholder="ელ. ფოსტა"
               />
             </div>
-            <div>
+            <div className={classes.input}>
               <label htmlFor="firstName">პაროლი</label>
               <input
                 value={password}
@@ -81,8 +104,17 @@ const Register = () => {
                 placeholder="პაროლი"
               />
             </div>
+            <div className={classes.input}>
+              <label htmlFor="firstName">გაიმეორეთ პაროლი</label>
+              <input
+                value={repeatPassword}
+                onChange={(e) => setRepeatPassword(e.target.value)}
+                type="password"
+                placeholder="პაროლი"
+              />
+            </div>
           </div>
-          <button>submit</button>
+          <button>რეგისტრაცია</button>
         </form>
       </div>
     </div>

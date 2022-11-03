@@ -20,7 +20,7 @@
 .search {
     display: flex;
     justify-content: space-between;
-    border: 2px solid rgb(226,226,226);
+    border: 2px solid #E2E2E2;
     height: 30px;
     width: 300px;
     padding: 10px;
