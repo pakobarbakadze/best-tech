@@ -3,9 +3,27 @@ import bcrypt from "bcryptjs";
 
 const userSchema = mongoose.Schema(
   {
-    name: {
+    firstName: {
       type: String,
       requre: true,
+    },
+    lastName: {
+      type: String,
+      requre: true,
+    },
+    pId: {
+      type: String,
+      require: true,
+      unique: true,
+      minLength: 11,
+      maxLength: 11,
+    },
+    phone: {
+      type: Number,
+      require: true,
+      unique: true,
+      min: 100000000,
+      max: 999999999,
     },
     email: {
       type: String,
@@ -26,6 +44,17 @@ const userSchema = mongoose.Schema(
     timestamps: true,
   }
 );
+
+//hash password before saving
+userSchema.pre("save", async function (next) {
+  const user = this;
+
+  if (user.isModified("password")) {
+    user.password = await bcrypt.hash(user.password, 10);
+  }
+
+  next();
+});
 
 userSchema.methods.matchPassword = async function (enteredPassword) {
   return bcrypt.compare(enteredPassword, this.password);
