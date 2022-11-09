@@ -51,24 +51,27 @@ const deleteProduct = async (req, res) => {
   }
 };
 
-// @desc    Create a product
+// @desc    Upload a product
 // @route   POST /api/products
 // @access  Private/Admin
-const createProduct = async (req, res) => {
+const uploadProduct = async (req, res) => {
+  const { name, price, images, brand, category, countInStock, description } = req.body;
+
   const product = new Product({
-    name: "Sample name",
-    price: 0,
     user: req.user._id,
-    image: ["/images/sample.jpg"],
-    brand: "Sample brand",
-    category: "Sample category",
-    countInStock: 0,
+    uploader: req.user._id,
+    name: name,
+    price: price,
+    images: images,
+    brand: brand,
+    category: category,
+    countInStock: countInStock,
     numReviews: 0,
-    description: "Sample description",
+    description: description,
   });
 
-  const createdProduct = await product.save();
-  res.status(201).json(createdProduct);
+  const uploadedProduct = await product.save();
+  res.status(201).json(uploadedProduct);
 };
 
 // @desc    Update a product
@@ -148,7 +151,7 @@ export {
   getProducts,
   getProductById,
   deleteProduct,
-  createProduct,
+  uploadProduct,
   updateProduct,
   createProductReview,
   getTopProducts,

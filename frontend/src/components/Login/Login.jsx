@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 import classes from "./Login.module.css";
@@ -12,6 +12,7 @@ const Login = () => {
   const [password, setPassword] = useState("");
   
   const dispatch = useDispatch();
+  const navigate = useNavigate()
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -23,6 +24,7 @@ const Login = () => {
       .then((res) => {
         console.log(res);
         dispatch(userActions.setState(res.data));
+        navigate('/')
       })
       .catch((err) => {
         console.log(err);

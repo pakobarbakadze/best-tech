@@ -4,6 +4,7 @@ import "./App.css";
 import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
 import ProductDetailsPage from "./pages/ProductDetailsPage";
+import ProductUploadPage from "./pages/ProductUploadPage";
 import RegisterPage from "./pages/RegisterPage";
 
 const App = () => {
@@ -14,6 +15,7 @@ const App = () => {
         <Route path="/product/:_id" element={<ProductDetailsPage />}></Route>
         <Route path="/login" element={<LoginPage />}></Route>
         <Route path="/register" element={<RegisterPage />}></Route>
+        <Route path="/product/upload" element={<ProductUploadPage/>}></Route>
       </Routes>
     </Router>
   );

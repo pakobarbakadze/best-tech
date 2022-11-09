@@ -24,7 +24,7 @@ const customizedMiddleware = getDefaultMiddleware({
 
 const store = configureStore({
   reducer: {
-    user : presistedUserReducer
+    presistedUser : presistedUserReducer
   },
   middleware: customizedMiddleware,
 });

@@ -6,17 +6,16 @@ import classes from "./ProductDetails.module.css";
 
 const ProductDetails = () => {
   const { _id } = useParams();
-  const [products, setProducts] = useState()
+  const [product, setProduct] = useState()
   const [counter, setCounter] = useState(1);
-  const product = products.find((p) => p._id === _id);
 
   useEffect(() => {
-    axios.get('/api/products').then((res) =>{
-      setProducts(res)
+    axios.get(`/api/products/${_id}`).then((res) =>{
+      setProduct(res.data)
     }).catch((e) =>{
       console.log(e)
     })
-  }, [])
+  }, [_id])
 
   const decHandler = () => {
     if (counter > 1) {
@@ -28,14 +27,14 @@ const ProductDetails = () => {
     setCounter((prev) => prev + 1);
   };
 
-  return (
+  if(product) return (
     <div className={classes.container}>
       <div className={classes.header}>
         <h1>{product.name}</h1>
         <h2>{`პროდუქტის კოდი: ${product._id}`}</h2>
       </div>
       <div className={classes.preview}>
-        <img src={product.image} alt="preview" />
+        <img src={product.images[0]} alt="preview" />
         <h1>{`ფასი: ${product.price}.00ლ`}</h1>
         <div className={classes.add}>
           <h1>რაოდენობა</h1>
@@ -53,6 +52,10 @@ const ProductDetails = () => {
       <div className={classes.specification}></div>
     </div>
   );
+
+  else return(
+    <>loading product</>
+  )
 };
 
 export default ProductDetails;

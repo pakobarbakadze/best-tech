@@ -1,0 +1,29 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  width: 175px;
+  margin-top: 50px;
+  margin-left: 60px;
+  padding: 0 10px;
+  border: solid 1px rgba(161, 161, 161, 0.73);
+
+  box-shadow: 15px 15px 6px -9px rgba(161, 161, 161, 0.73);
+  -webkit-box-shadow: 15px 15px 6px -9px rgba(161, 161, 161, 0.73);
+  -moz-box-shadow: 15px 15px 6px -9px rgba(161, 161, 161, 0.73);
+}
+
+.options li {
+  margin: 10px 0;
+  color: black !important;
+  font-size: 18px;
+}
+
+.options li a {
+  text-decoration: none;
+  color: black !important;
+}
+
+.options li:hover {
+  cursor: pointer;
+}

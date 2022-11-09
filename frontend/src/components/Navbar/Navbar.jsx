@@ -1,12 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+
+import { useSelector } from "react-redux";
 
 import classes from "./Navbar.module.css";
 
 import Logo from "../../icons/logo.png";
 import Cart from "../../icons/cart.png";
+import ProfileDropdown from "../../ui/ProfileDropdown/ProfileDropdown";
 
 const Navbar = () => {
+  const user = useSelector((state) => state.presistedUser.userReducer.user);
+
+  const [profileDropDown, setProfileDropDown] = useState(false);
+
+  const profileStateHandler = () =>{
+    setProfileDropDown(!profileDropDown)
+  }
+
   return (
     <div className={classes.navbar}>
       <div className={classes.logo}>
@@ -23,7 +34,20 @@ const Navbar = () => {
         <Link to="/cart">
           <img src={Cart} alt="cart" />
         </Link>
-        <Link to="/login">ავტორიზაცია</Link>
+        {!user && (
+          <Link to="/login" className={classes.profile}>
+            ავტორიზაცია
+          </Link>
+        )}
+        {user && (
+          <div
+            className={classes.profile}
+            onClick={profileStateHandler}
+          >
+            ჩემი ანგარიში
+          </div>
+        )}
+        {profileDropDown && <ProfileDropdown changeState={profileStateHandler}/>}
       </div>
     </div>
   );

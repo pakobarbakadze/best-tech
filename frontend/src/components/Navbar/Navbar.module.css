@@ -1,69 +1,78 @@
 .navbar {
-    display: flex;
-    justify-content: space-between;
-    margin: 40px 15% 20px;
+  display: flex;
+  justify-content: space-between;
+  margin: 40px 15% 20px;
 }
 
 .logo {
-    display: flex;
-    width: 220px;
+  display: flex;
+  width: 220px;
 }
 
 .logo a {
-    font-size: 30px;
-    font-weight: 600;
-    margin: auto 0px;
-    margin-left: 5px;
-    text-decoration: none;
+  font-size: 30px;
+  font-weight: 600;
+  margin: auto 0px;
+  margin-left: 5px;
+  text-decoration: none;
 }
 
 .search {
-    display: flex;
-    justify-content: space-between;
-    border: 2px solid #E2E2E2;
-    height: 30px;
-    width: 300px;
-    padding: 10px;
-    border-radius: 30px;
+  display: flex;
+  justify-content: space-between;
+  border: 2px solid #e2e2e2;
+  height: 30px;
+  width: 300px;
+  padding: 10px;
+  border-radius: 30px;
 }
 
 .search input {
-    border: none;
-    height: 30px;
-    padding: 0;
-    font-size: 16px;
+  border: none;
+  height: 30px;
+  padding: 0;
+  font-size: 16px;
 }
 
-.search input:focus{
-    outline: none;
+.search input:focus {
+  outline: none;
 }
 
-.search button{
-    font-size: 18px;
-    border: none;
-    background-color: white;
-    border-left: 1px solid #EBEBEB;
-    margin-right: 4px;
+.search button {
+  font-size: 18px;
+  border: none;
+  background-color: white;
+  border-left: 1px solid #ebebeb;
+  margin-right: 4px;
 }
 
-.search button:hover{
-    cursor: pointer;
+.search button:hover {
+  cursor: pointer;
 }
 
 .menu {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  position: relative;
+  width: 200px;
 }
 
-.menu a {
-    font-size: 20px;
-    padding-left: 20px;
-    margin: auto 0px;
-    text-decoration: none;
+.profile {
+  font-size: 20px;
+  text-decoration: none;
+  margin-left: auto !important;
+  margin: auto 0px;
+  user-select: none;
+}
+
+.profile:hover {
+    cursor: pointer;
 }
 
 .menu img {
-    width: 30px;
-    height: 30px;
-    margin: auto 0px;
+  width: 30px;
+  height: 30px;
+}
+
+.menu a {
+  margin: auto 0px;
 }

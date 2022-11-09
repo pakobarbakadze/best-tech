@@ -7,7 +7,7 @@ const ProductCard = ({ product }) => {
   return (
     <div className={classes.container}>
       <div className={classes.info}>
-        <img src={product.image} alt="preview" />
+        <img src={product.images[0]} alt="preview" />
         <Link to={`/product/${product._id}`}>{product.name}</Link>
         <h2>{`${product.price}.00₾`}</h2>
       </div>
