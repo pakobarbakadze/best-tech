@@ -17,8 +17,6 @@ const Register = () => {
     console.log("submited");
 
     if (password === repeatPassword) {
-      console.log({ firstName, lastName, pId, email, phone, password });
-
       axios
         .post("/api/users", {
           firstName: firstName,

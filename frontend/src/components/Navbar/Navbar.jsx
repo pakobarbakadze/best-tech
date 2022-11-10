@@ -11,7 +11,6 @@ import ProfileDropdown from "../../ui/ProfileDropdown/ProfileDropdown";
 
 const Navbar = () => {
   const user = useSelector((state) => state.presistedUser.userReducer.user);
-
   const [profileDropDown, setProfileDropDown] = useState(false);
 
   const profileStateHandler = () =>{

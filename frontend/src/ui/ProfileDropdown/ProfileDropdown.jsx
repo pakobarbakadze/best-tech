@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 import { useDispatch, useSelector } from "react-redux";
 import { userActions } from "../../redux/ConfigureStore.User";
@@ -11,14 +12,24 @@ const ProfileDropdown = (props) => {
   const user = useSelector((state) => state.presistedUser.userReducer.user);
 
   const signoutClickHandler = () => {
-    dispatch(userActions.setState());
-    props.changeState();
+    const config = { Authorization: `Bearer ${user.token}` };
+    const bodyParameters = { _id: user.userData._id, token: user.token };
+
+    axios
+      .post("/api/users/signOut", bodyParameters, { headers: config })
+      .then((res) => {
+        dispatch(userActions.setState());
+        props.changeState();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return (
     <div className={classes.container}>
       <ul className={classes.options}>
-        {user.isAdmin && (
+        {user?.userData.isAdmin && (
           <li>
             <Link to="/product/upload">პროდუქტის ატვირთვა</Link>
           </li>

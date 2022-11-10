@@ -4,14 +4,32 @@ import User from "../models/userModel.js";
 // @route   POST /api/users/login
 // @access  Public
 const authUser = async (req, res) => {
-  const { email, password } = req.body
+  const { email, password } = req.body;
   try {
-    const user = await User.findByCredentials(email, password)
-    const token = await user.generateAuthToken()
-    res.send({ user, token })
-} catch (e) {
-    res.status(400).send(e)
-}
+    const user = await User.findByCredentials(email, password);
+    const token = await user.generateAuthToken();
+    res.send({ userData : user, token });
+  } catch (e) {
+    res.status(400).send(e);
+  }
+};
+
+// @desc    User sign out
+// @route   POST /api/users/signOut
+// @access  Public
+const userSignout = async (req, res) => {
+  const { _id, token } = req.body;
+  console.log(_id , token)
+  try {
+    const user = await User.findById(_id);
+    user.tokens = user.tokens.filter((tok) => {
+      return tok.token != token;
+    });
+    await user.save();
+    res.send();
+  } catch (e) {
+    res.status(500).send(e);
+  }
 };
 
 // @desc    Register a new user
@@ -22,8 +40,7 @@ const registerUser = async (req, res) => {
 
   try {
     await user.save();
-    const token = await user.generateAuthToken(user._id);
-    res.status(201).send({ user, token });
+    res.status(201).send({ user });
   } catch (e) {
     res.status(400).send(e);
   }
@@ -41,4 +58,4 @@ const getUsers = async (req, res) => {
   }
 };
 
-export { authUser, registerUser, getUsers };
+export { authUser, registerUser, getUsers, userSignout };

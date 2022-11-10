@@ -22,7 +22,6 @@ const Login = () => {
         password: password,
       })
       .then((res) => {
-        console.log(res);
         dispatch(userActions.setState(res.data));
         navigate('/')
       })
