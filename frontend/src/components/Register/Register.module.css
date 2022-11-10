@@ -10,7 +10,7 @@
   margin-bottom: 20px;
 }
 
-.form {
+.container form {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -48,7 +48,7 @@
   outline: none;
 }
 
-.form button {
+.container form button {
   font-size: 20px;
   height: 32px;
   width: 250px;
@@ -57,7 +57,7 @@
   border-radius: 15px;
 }
 
-.form button:hover {
-    cursor: pointer;
-    background-color: #e2e2e2;
+.containerform button:hover {
+  cursor: pointer;
+  background-color: #e2e2e2;
 }

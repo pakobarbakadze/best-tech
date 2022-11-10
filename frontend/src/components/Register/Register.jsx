@@ -43,7 +43,7 @@ const Register = () => {
     <div className={classes.container}>
       <h1>ახალი ანგარიშის რეგისტრაცია</h1>
       <div>
-        <form className={classes.form} onSubmit={submitHandler}>
+        <form onSubmit={submitHandler}>
           <div className={classes.info}>
             <h2>პირადი ინფორმაცია</h2>
             <div className={classes.input}>
