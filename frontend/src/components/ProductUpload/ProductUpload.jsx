@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
 
+import { useSelector } from 'react-redux'
+
 import classes from "./ProductUpload.module.css";
 
 const ProductUpload = () => {
@@ -11,18 +13,24 @@ const ProductUpload = () => {
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState(0);
 
+  const user = useSelector((state) => state.presistedUser.userReducer.user);
+
   const submitHandler = (e) => {
     e.preventDefault();
 
+    const config = { Authorization :  `Bearer ${user.token}`}
+
+    const bodyParameters = {
+      name: name,
+      images: [image],
+      brand: brand,
+      category: category,
+      description: description,
+      price: price,
+    };
+
     axios
-      .post("/api/products", {
-        name: name,
-        images: [image],
-        brand: brand,
-        category: category,
-        description: description,
-        price: price,
-      })
+      .post("/api/products", bodyParameters, config)
       .then((res) => {
         console.log(res);
       })
