@@ -18,10 +18,10 @@ const authUser = async (req, res) => {
 // @route   POST /api/users/signOut
 // @access  Public
 const userSignout = async (req, res) => {
-  const { _id, token } = req.body;
-  console.log(_id , token)
+  const { token } = req.body;
+  console.log(req.user._id , token)
   try {
-    const user = await User.findById(_id);
+    const user = await User.findById(req.user._id);
     user.tokens = user.tokens.filter((tok) => {
       return tok.token != token;
     });
