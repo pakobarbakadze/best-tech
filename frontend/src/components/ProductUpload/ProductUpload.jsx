@@ -1,83 +1,102 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-import { useSelector } from 'react-redux'
+import { useSelector } from "react-redux";
 
 import classes from "./ProductUpload.module.css";
 
 const ProductUpload = () => {
-  const [name, setName] = useState("");
-  const [image, setImage] = useState("");
-  const [brand, setBrand] = useState("");
-  const [category, setCategory] = useState("");
-  const [description, setDescription] = useState("");
-  const [price, setPrice] = useState(0);
+  const initData = {
+    name: "",
+    images: [""],
+    brand: "",
+    category: "",
+    description: "",
+    price: "",
+  };
+  const [formData, setFormData] = useState(initData);
 
   const user = useSelector((state) => state.presistedUser.userReducer.user);
+
+  const inputHandler = (e) => {
+    if (e.target.id !== "images") {
+      const newData = { ...formData };
+      newData[e.target.id] = e.target.value;
+      setFormData(newData);
+    } else {
+      const newData = { ...formData };
+      newData[e.target.id][0] = e.target.value;
+      setFormData(newData)
+    }
+  };
 
   const submitHandler = (e) => {
     e.preventDefault();
 
-    const config = { Authorization :  `Bearer ${user.token}`}
-
-    const bodyParameters = {
-      name: name,
-      images: [image],
-      brand: brand,
-      category: category,
-      description: description,
-      price: price,
-    };
+    const config = { Authorization: `Bearer ${user.token}` };
 
     axios
-      .post("/api/products", bodyParameters, config)
+      .post("/api/products", formData, { headers: config })
       .then((res) => {
         console.log(res);
+        setFormData(initData);
       })
       .catch((err) => {
         console.log(err);
       });
   };
+
   return (
     <div className={classes.container}>
       <h1>ახალი პროდუქტის ატვირთვა</h1>
       <form onSubmit={submitHandler}>
         <input
           type="text"
-          name="name"
+          id="name"
           placeholder="სახელი"
-          onChange={(e) => setName(e.target.value)}
           autoComplete="off"
+          onChange={(e) => inputHandler(e)}
+          value={formData.name}
         />
         <input
           type="text"
-          name="images"
+          id="images"
           placeholder="ფოტოს url"
-          onChange={(e) => setImage(e.target.value)}
+          autoComplete="off"
+          onChange={(e) => inputHandler(e)}
+          value={formData.images[0]}
         />
         <input
           type="text"
-          name="brand"
+          id="brand"
           placeholder="ბრენდი"
-          onClick={(e) => setBrand(e.target.value)}
+          autoComplete="off"
+          onChange={(e) => inputHandler(e)}
+          value={formData.brand}
         />
         <input
           type="text"
-          name="category"
+          id="category"
           placeholder="კატეგორია"
-          onChange={(e) => setCategory(e.target.value)}
+          autoComplete="off"
+          onChange={(e) => inputHandler(e)}
+          value={formData.category}
         />
         <input
           type="text"
-          name="description"
+          id="description"
           placeholder="აღწერა"
-          onChange={(e) => setDescription(e.target.value)}
+          autoComplete="off"
+          onChange={(e) => inputHandler(e)}
+          value={formData.description}
         />
         <input
           type="number"
-          name="price"
+          id="price"
           placeholder="ფასი"
-          onChange={(e) => setPrice(e.target.value)}
+          autoComplete="off"
+          onChange={(e) => inputHandler(e)}
+          value={formData.price}
         />
         <button>ატვირთვა</button>
       </form>

@@ -55,23 +55,23 @@ const deleteProduct = async (req, res) => {
 // @route   POST /api/products
 // @access  Private/Admin
 const uploadProduct = async (req, res) => {
-  const { name, price, images, brand, category, countInStock, description } = req.body;
-
-  const product = new Product({
-    user: req.user._id,
-    uploader: req.user._id,
-    name: name,
-    price: price,
-    images: images,
-    brand: brand,
-    category: category,
-    countInStock: countInStock,
-    numReviews: 0,
-    description: description,
-  });
-
-  const uploadedProduct = await product.save();
-  res.status(201).json(uploadedProduct);
+  const { name, price, images, brand, category, description } = req.body;
+  try {
+    const product = new Product({
+      user: req.user._id,
+      uploader: req.user._id,
+      name: name,
+      price: price,
+      images: images,
+      brand: brand,
+      category: category,
+      description: description,
+    });
+    const uploadedProduct = await product.save();
+    res.status(201).json(uploadedProduct);
+  } catch (e) {
+    res.status(500).send(e);
+  }
 };
 
 // @desc    Update a product
