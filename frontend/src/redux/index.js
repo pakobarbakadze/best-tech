@@ -5,9 +5,11 @@ import storage from "redux-persist/lib/storage";
 
 
 import userReducer from "./ConfigureStore.User.js";
+import cartReducer from './ConfigureStore.Cart.js'
 
 const reducers = combineReducers({
-  userReducer
+  userReducer,
+  cartReducer
 })
 
 const persistConfig = {
@@ -15,7 +17,7 @@ const persistConfig = {
   storage
 }
 
-const presistedUserReducer = persistReducer(persistConfig, reducers)
+const persistedStoreReducer = persistReducer(persistConfig, reducers)
 
 const customizedMiddleware = getDefaultMiddleware({
   serializableCheck: false
@@ -24,7 +26,7 @@ const customizedMiddleware = getDefaultMiddleware({
 
 const store = configureStore({
   reducer: {
-    presistedUser : presistedUserReducer
+    persistedStore : persisterStoreReducer
   },
   middleware: customizedMiddleware,
 });

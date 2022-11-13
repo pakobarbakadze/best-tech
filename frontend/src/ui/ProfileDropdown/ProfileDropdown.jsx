@@ -9,7 +9,7 @@ import classes from "./ProfileDropdown.module.css";
 
 const ProfileDropdown = (props) => {
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.presistedUser.userReducer.user);
+  const user = useSelector((state) => state.persistedStore.userReducer.user);
 
   const signoutClickHandler = () => {
     const config = { Authorization: `Bearer ${user.token}` };
