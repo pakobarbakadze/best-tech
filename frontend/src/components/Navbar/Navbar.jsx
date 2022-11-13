@@ -33,12 +33,12 @@ const Navbar = () => {
         <Link to="/cart">
           <img src={Cart} alt="cart" />
         </Link>
-        {!user && (
+        {!user.userData && (
           <Link to="/login" className={classes.profile}>
             ავტორიზაცია
           </Link>
         )}
-        {user && (
+        {user.userData && (
           <div
             className={classes.profile}
             onClick={profileStateHandler}
