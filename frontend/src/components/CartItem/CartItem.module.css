@@ -1,14 +1,15 @@
-.section {
-  margin-left: 16px;
-  margin-bottom: 40px;
+.container {
+  box-sizing: border-box;
+  margin: 15px 0;
   display: flex;
-  margin-bottom: 15px;
+  justify-content: space-between;
+  width: 100%;
 }
 
 .info {
-  width: 100%;
   display: flex;
   flex-direction: column;
+  margin: 0px 16px;
 }
 
 .info h1 {
@@ -27,11 +28,6 @@
   font-weight: 600;
   font-size: 16px;
   margin-bottom: 12px;
-}
-
-.info#bag {
-  margin-left: -16px;
-  margin-bottom: 15px;
 }
 
 .info#bag h1 {
@@ -62,19 +58,24 @@
   text-align: center;
 }
 
-.prevPhoto {
-  width: 200px;
-  height: 200px;
-}
-
 .right_panel {
   display: flex;
   justify-content: flex-start;
   flex-direction: row;
   position: relative;
-  margin-left: 20px;
-  margin-right: 16px;
-  right: 0px;
+}
+
+.prevPhoto {
+  object-fit: contain;
+  width: 100px;
+  height: 100px;
+  padding: 15px;
+  margin: auto 0px;
+}
+
+.prevPhoto#bag {
+  width: 200px;
+  height: 288px;
 }
 
 .right_panel h4 {
@@ -87,7 +88,6 @@
   display: flex;
   justify-content: space-between;
   flex-direction: column;
-  margin-right: 10px;
 }
 
 .counter button {

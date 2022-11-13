@@ -20,7 +20,7 @@ const cartSlice = createSlice({
     decreaseQuantity(state, action) {
       const index = itemIndex(state, action);
       if(state.items[index].cartQuantity > 1) state.items[index].cartQuantity -= 1;
-      else state.items.pop(index)
+      else state.items.splice(index, 1)
     },
     emptyCart(state, action) {
       state.items = []

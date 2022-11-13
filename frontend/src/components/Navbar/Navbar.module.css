@@ -69,12 +69,12 @@
     cursor: pointer;
 }
 
-.menu img {
+.cart_img {
   width: 30px;
   height: 30px;
 }
 
-.menu img:hover {
+.cart_img:hover {
   cursor: pointer;
 }
 

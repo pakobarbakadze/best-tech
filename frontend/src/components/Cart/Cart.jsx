@@ -12,7 +12,7 @@ const Cart = () => {
   console.log(cart)
 
   return (
-    <div className={classes.section}>
+    <div className={classes.container}>
       <h1 className={classes.header}>CART</h1>
       <div className={classes.items}>
         {cart.map((item, index) => (

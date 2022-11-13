@@ -37,7 +37,7 @@ const CartItem = ({ item, arrows, from }) => {
   };
 
   return (
-    <div className={classes.section}>
+    <div className={classes.container}>
       <div className={classes.info} id={from === "Bag" ? classes.bag : ""}>
         <h1>{item.brand}</h1>
         <h2>{item.name}</h2>

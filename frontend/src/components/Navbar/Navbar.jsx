@@ -39,7 +39,7 @@ const Navbar = () => {
         <button>ძებნა</button>
       </div>
       <div className={classes.menu}>
-        <img src={Cart} alt="cart" onClick={cartDropdownStateHandler} />
+        <img src={Cart} alt="cart" onClick={cartDropdownStateHandler} className={classes['cart_img']}/>
         {!user ? (
           <Link to="/login" className={classes.profile}>
             ავტორიზაცია
