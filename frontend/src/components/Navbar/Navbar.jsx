@@ -13,9 +13,9 @@ const Navbar = () => {
   const user = useSelector((state) => state.presistedUser.userReducer.user);
   const [profileDropDown, setProfileDropDown] = useState(false);
 
-  const profileStateHandler = () =>{
-    setProfileDropDown(!profileDropDown)
-  }
+  const profileStateHandler = () => {
+    setProfileDropDown(!profileDropDown);
+  };
 
   return (
     <div className={classes.navbar}>
@@ -33,20 +33,19 @@ const Navbar = () => {
         <Link to="/cart">
           <img src={Cart} alt="cart" />
         </Link>
-        {!user.userData && (
+        {!user ? (
           <Link to="/login" className={classes.profile}>
             ავტორიზაცია
           </Link>
-        )}
-        {user.userData && (
-          <div
-            className={classes.profile}
-            onClick={profileStateHandler}
-          >
+        ) : (
+          <div className={classes.profile} onClick={profileStateHandler}>
             ჩემი ანგარიში
           </div>
         )}
-        {profileDropDown && <ProfileDropdown changeState={profileStateHandler}/>}
+
+        {profileDropDown && (
+          <ProfileDropdown changeState={profileStateHandler} />
+        )}
       </div>
     </div>
   );

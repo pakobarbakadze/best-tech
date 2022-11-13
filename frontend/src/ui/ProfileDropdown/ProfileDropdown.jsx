@@ -13,9 +13,8 @@ const ProfileDropdown = (props) => {
 
   const signoutClickHandler = () => {
     const config = { Authorization: `Bearer ${user.token}` };
-    const bodyParameters = { token: user.userData?.token };
-    // dispatch(userActions.setState());
-    // props.changeState();
+    const bodyParameters = { token: user?.token };
+
     axios
       .post("/api/users/signOut", bodyParameters, { headers: config })
       .then((res) => {
@@ -30,12 +29,12 @@ const ProfileDropdown = (props) => {
   return (
     <div className={classes.container}>
       <ul className={classes.options}>
-        {user.userData?.isAdmin && (
+        {user?.userData.isAdmin && (
           <li>
             <Link to="/product/upload">პროდუქტის ატვირთვა</Link>
           </li>
         )}
-        {!user.userData?.isAdmin && <li>პროფილი</li>}
+        {!user?.userData.isAdmin && <li>პროფილი</li>}
         <li>შეკვეთების ისტორია</li>
         <li onClick={signoutClickHandler}>გასვლა</li>
       </ul>

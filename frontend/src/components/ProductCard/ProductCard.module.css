@@ -15,10 +15,11 @@
 }
 
 .info img {
-  width: 150px;
-  height: 150px;
+  width: 80%;
+  height: 80%;
   align-items: center;
   margin: 40px auto;
+  object-fit: contain;
 }
 
 .info a {
