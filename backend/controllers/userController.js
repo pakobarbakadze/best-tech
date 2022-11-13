@@ -19,7 +19,6 @@ const authUser = async (req, res) => {
 // @access  Public
 const userSignout = async (req, res) => {
   const { token } = req.body;
-  console.log(req.user._id , token)
   try {
     const user = await User.findById(req.user._id);
     user.tokens = user.tokens.filter((tok) => {

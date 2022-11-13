@@ -16,12 +16,16 @@ const getProducts = async (req, res) => {
       }
     : {};
 
-  const count = await Product.countDocuments({ ...keyword });
-  const products = await Product.find({ ...keyword })
-    .limit(pageSize)
-    .skip(pageSize * (page - 1));
+  try {
+    const count = await Product.countDocuments({ ...keyword });
+    const products = await Product.find({ ...keyword })
+      .limit(pageSize)
+      .skip(pageSize * (page - 1));
 
-  res.json({ products, page, pages: Math.ceil(count / pageSize) });
+    res.json({ products, page, pages: Math.ceil(count / pageSize) });
+  } catch (e) {
+    res.status(500).send(e);
+  }
 };
 
 // @desc    Fetch single product
@@ -30,9 +34,9 @@ const getProducts = async (req, res) => {
 const getProductById = async (req, res) => {
   const product = await Product.findById(req.params.id);
 
-  if (product) {
+  try {
     res.json(product);
-  } else {
+  } catch (e) {
     res.status(404).send("Product not found");
   }
 };
@@ -43,10 +47,10 @@ const getProductById = async (req, res) => {
 const deleteProduct = async (req, res) => {
   const product = await Product.findById(req.params.id);
 
-  if (product) {
+  try {
     await product.remove();
     res.json({ message: "Product removed" });
-  } else {
+  } catch (e) {
     res.status(404).send("Product not found");
   }
 };
@@ -81,70 +85,23 @@ const updateProduct = async (req, res) => {
   const { name, price, description, image, brand, category, countInStock } =
     req.body;
 
-  const product = await Product.findById(req.params.id);
+  try {
+    const product = await Product.findById(req.params.id);
+    if (product) {
+      product.name = name;
+      product.price = price;
+      product.description = description;
+      product.image = image;
+      product.brand = brand;
+      product.category = category;
+      product.countInStock = countInStock;
 
-  if (product) {
-    product.name = name;
-    product.price = price;
-    product.description = description;
-    product.image = image;
-    product.brand = brand;
-    product.category = category;
-    product.countInStock = countInStock;
-
-    const updatedProduct = await product.save();
-    res.json(updatedProduct);
-  } else {
-    res.status(404).send("Product not found");
-  }
-};
-
-// @desc    Create new review
-// @route   POST /api/products/:id/reviews
-// @access  Private
-const createProductReview = async (req, res) => {
-  const { rating, comment } = req.body;
-
-  const product = await Product.findById(req.params.id);
-
-  if (product) {
-    const alreadyReviewed = product.reviews.find(
-      (r) => r.user.toString() === req.user._id.toString()
-    );
-
-    if (alreadyReviewed) {
-      res.status(400).send("Product already reviewed");
+      const updatedProduct = await product.save();
+      res.json(updatedProduct);
     }
-
-    const review = {
-      name: req.user.name,
-      rating: Number(rating),
-      comment,
-      user: req.user._id,
-    };
-
-    product.reviews.push(review);
-
-    product.numReviews = product.reviews.length;
-
-    product.rating =
-      product.reviews.reduce((acc, item) => item.rating + acc, 0) /
-      product.reviews.length;
-
-    await product.save();
-    res.status(201).json({ message: "Review added" });
-  } else {
+  } catch (e) {
     res.status(404).send("Product not found");
   }
-};
-
-// @desc    Get top rated products
-// @route   GET /api/products/top
-// @access  Public
-const getTopProducts = async (req, res) => {
-  const products = await Product.find({}).sort({ rating: -1 }).limit(3);
-
-  res.json(products);
 };
 
 export {
@@ -153,6 +110,4 @@ export {
   deleteProduct,
   uploadProduct,
   updateProduct,
-  createProductReview,
-  getTopProducts,
 };
