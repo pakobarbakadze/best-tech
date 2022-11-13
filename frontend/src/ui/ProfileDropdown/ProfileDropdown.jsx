@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 
 import { useDispatch, useSelector } from "react-redux";
-import { userActions } from "../../redux/ConfigureStore.User";
+import { userActions } from "../../redux/ConfigureStore.User.js";
+import { cartActions } from "../../redux/ConfigureStore.Cart.js";
 
 import classes from "./ProfileDropdown.module.css";
 
@@ -19,7 +20,9 @@ const ProfileDropdown = (props) => {
       .post("/api/users/signOut", bodyParameters, { headers: config })
       .then((res) => {
         dispatch(userActions.setState());
+        dispatch(cartActions.emptyCart());
         props.changeState();
+        console.log(res)
       })
       .catch((err) => {
         console.log(err);

@@ -48,16 +48,3 @@
   outline: none;
 }
 
-.container form button {
-  font-size: 20px;
-  height: 32px;
-  width: 250px;
-  margin: 30px auto;
-  border: 2px solid #e2e2e2;
-  border-radius: 15px;
-}
-
-.containerform button:hover {
-  cursor: pointer;
-  background-color: #e2e2e2;
-}

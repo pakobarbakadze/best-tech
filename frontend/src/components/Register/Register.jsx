@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
 
+import SubmitButton from "../../ui/SubmitButton/SubmitButton";
+
 import classes from "./Register.module.css";
 
 const Register = () => {
@@ -112,7 +114,9 @@ const Register = () => {
               />
             </div>
           </div>
-          <button>რეგისტრაცია</button>
+          <div className={classes.btn}>
+            <SubmitButton text={"რეგისტრაცია"} />
+          </div>
         </form>
       </div>
     </div>

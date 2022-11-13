@@ -7,14 +7,23 @@ import classes from "./Navbar.module.css";
 
 import Logo from "../../icons/logo.png";
 import Cart from "../../icons/cart.png";
+
 import ProfileDropdown from "../../ui/ProfileDropdown/ProfileDropdown";
+import CartDropdown from "../../ui/CartDropdown/CartDropdown";
 
 const Navbar = () => {
   const user = useSelector((state) => state.persistedStore.userReducer.user);
   const [profileDropDown, setProfileDropDown] = useState(false);
+  const [cartDropdown, setCartDropdown] = useState(false);
 
   const profileStateHandler = () => {
     setProfileDropDown(!profileDropDown);
+    if(cartDropdown) setCartDropdown(false)
+  };
+
+  const cartDropdownStateHandler = () => {
+    setCartDropdown(!cartDropdown);
+    if(profileDropDown) setProfileDropDown(false)
   };
 
   return (
@@ -30,9 +39,7 @@ const Navbar = () => {
         <button>ძებნა</button>
       </div>
       <div className={classes.menu}>
-        <Link to="/cart">
-          <img src={Cart} alt="cart" />
-        </Link>
+        <img src={Cart} alt="cart" onClick={cartDropdownStateHandler} />
         {!user ? (
           <Link to="/login" className={classes.profile}>
             ავტორიზაცია
@@ -46,6 +53,7 @@ const Navbar = () => {
         {profileDropDown && (
           <ProfileDropdown changeState={profileStateHandler} />
         )}
+        {cartDropdown && <CartDropdown></CartDropdown>}
       </div>
     </div>
   );

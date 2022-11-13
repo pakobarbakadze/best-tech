@@ -54,6 +54,7 @@
   display: flex;
   position: relative;
   width: 200px;
+  margin: auto 0px;
 }
 
 .profile {
@@ -71,6 +72,10 @@
 .menu img {
   width: 30px;
   height: 30px;
+}
+
+.menu img:hover {
+  cursor: pointer;
 }
 
 .menu a {

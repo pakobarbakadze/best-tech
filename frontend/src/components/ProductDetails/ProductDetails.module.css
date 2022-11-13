@@ -75,3 +75,9 @@
 .quantity_button button:hover {
   cursor: pointer;
 }
+
+.btn {
+  height: 32px;
+  width: 250px;
+  margin: auto 0px;
+}
