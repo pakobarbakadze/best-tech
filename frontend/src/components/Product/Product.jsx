@@ -1,11 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import axios from "axios";
+import { useParams } from "react-router-dom";
 
 import classes from "./Product.module.css";
 
 import ProductCard from "../ProductCard/ProductCard";
 
 const Product = () => {
+  const { category } = useParams();
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -17,12 +19,18 @@ const Product = () => {
       .catch((e) => {
         console.log(e);
       });
-  }, []); 
+  }, []);
+
+  const filteredList = useMemo(() => {
+    if (data && category) {
+      return data.products.filter((item) => item.category === category);
+    } else if (data && !category) return data.products;
+  }, [category, data]);
 
   return (
     <div className={classes.container}>
-      {data.products ? (
-        data.products.map((product) => (
+      {filteredList ? (
+        filteredList.map((product) => (
           <ProductCard key={product._id} product={product}></ProductCard>
         ))
       ) : (

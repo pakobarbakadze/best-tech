@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 import CartItem from "../../components/CartItem/CartItem";
-import TotalPrice from "../TotalPrice/TotalPrice";
+import TotalPrice from "../../helpers/TotalPrice/TotalPrice";
 
 import classes from "./CartDropdown.module.css";
 

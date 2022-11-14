@@ -13,6 +13,7 @@ const App = () => {
     <Router>
       <Routes>
         <Route path="/" element={<HomePage />}></Route>
+        <Route path="/:category" element={<HomePage/>}></Route>
         <Route path="/product/:_id" element={<ProductDetailsPage />}></Route>
         <Route path="/login" element={<LoginPage />}></Route>
         <Route path="/register" element={<RegisterPage />}></Route>

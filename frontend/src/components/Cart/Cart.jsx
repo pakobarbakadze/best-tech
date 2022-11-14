@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 
 import SectionDivider from "../../helpers/SectionDivider/SectionDivider";
 import CartItem from "../CartItem/CartItem";
-import TotalPrice from "../../ui/TotalPrice/TotalPrice";
+import TotalPrice from "../../helpers/TotalPrice/TotalPrice";
 
 import classes from "./Cart.module.css";
 

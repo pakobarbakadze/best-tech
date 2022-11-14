@@ -1,0 +1,27 @@
+.drop {
+  margin-bottom: 20px;
+  margin-left: 300px;
+  font-size: 20px;
+  font-weight: 600;
+  user-select: none;
+}
+
+.drop:hover {
+  cursor: pointer;
+}
+
+.list {
+  position: absolute;
+  left: 300px;
+  background-color: #f7f7f7;
+  z-index: 1;
+}
+
+.list li {
+  margin: 10px;
+  user-select: none;
+}
+
+.list li:hover {
+  cursor: pointer;
+}
