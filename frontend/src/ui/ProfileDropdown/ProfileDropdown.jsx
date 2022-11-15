@@ -14,15 +14,14 @@ const ProfileDropdown = (props) => {
 
   const signoutClickHandler = () => {
     const config = { Authorization: `Bearer ${user.token}` };
-    const bodyParameters = { token: user?.token };
 
     axios
-      .post("/api/users/signOut", bodyParameters, { headers: config })
+      .post("/api/users/signOut", { token: user.token }, { headers: config })
       .then((res) => {
         dispatch(userActions.setState());
         dispatch(cartActions.emptyCart());
         props.changeState();
-        console.log(res)
+        console.log(res);
       })
       .catch((err) => {
         console.log(err);

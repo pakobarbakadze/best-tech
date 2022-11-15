@@ -40,7 +40,7 @@ const Navbar = () => {
       </div>
       <div className={classes.menu}>
         <img src={Cart} alt="cart" onClick={cartDropdownStateHandler} className={classes['cart_img']}/>
-        {!user ? (
+        {!user?.userData ? (
           <Link to="/login" className={classes.profile}>
             ავტორიზაცია
           </Link>

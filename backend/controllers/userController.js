@@ -8,7 +8,7 @@ const authUser = async (req, res) => {
   try {
     const user = await User.findByCredentials(email, password);
     const token = await user.generateAuthToken();
-    res.send({ userData : user, token });
+    res.send({ userData: user, token });
   } catch (e) {
     res.status(400).send(e);
   }
@@ -18,13 +18,11 @@ const authUser = async (req, res) => {
 // @route   POST /api/users/signOut
 // @access  Public
 const userSignout = async (req, res) => {
-  const { token } = req.body;
   try {
-    const user = await User.findById(req.user._id);
-    user.tokens = user.tokens.filter((tok) => {
-      return tok.token != token;
+    req.user.tokens = req.user.tokens.filter((token) => {
+      return token.token !== req.body.token;
     });
-    await user.save();
+    await req.user.save();
     res.send();
   } catch (e) {
     res.status(500).send(e);
