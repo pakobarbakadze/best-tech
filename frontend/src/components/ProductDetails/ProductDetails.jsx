@@ -38,7 +38,6 @@ const ProductDetails = () => {
 
   const addToCartHandler = () => {
     dispatch(cartActions.addToCart({ ...product, cartQuantity: counter }));
-    //dispatch(cartActions.emptyCart())
   };
 
   if (product)

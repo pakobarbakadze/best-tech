@@ -9,7 +9,6 @@ import classes from "./Cart.module.css";
 
 const Cart = () => {
   const cart = useSelector((state) => state.persistedStore.cartReducer.items);
-  console.log(cart)
 
   return (
     <div className={classes.container}>
@@ -27,12 +26,10 @@ const Cart = () => {
       </div>
       <div className={classes.order}>
         <div className={classes.left}>
-          <h1>Tax 21%: </h1>
           <h1>Quantity: </h1>
           <h1>Total: </h1>
         </div>
         <div className={classes.right}>
-          <TotalPrice id="Tax" />
           <h3>{cart.length}</h3>
           <TotalPrice id="Bag" />
         </div>

@@ -25,7 +25,7 @@ const CartItem = ({ item, arrows, from }) => {
   };
 
   const nextPhoto = () => {
-    if (photoIndex < item.product.gallery.length - 1) {
+    if (photoIndex < item.images.length - 1) {
       setPhotoIndex((prev) => prev + 1);
     }
   };
