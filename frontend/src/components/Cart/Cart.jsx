@@ -1,5 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import { useNavigate } from 'react-router-dom'
 
 import SectionDivider from "../../helpers/SectionDivider/SectionDivider";
 import CartItem from "../CartItem/CartItem";
@@ -8,9 +9,11 @@ import TotalPrice from "../../helpers/TotalPrice/TotalPrice";
 import classes from "./Cart.module.css";
 
 const Cart = () => {
+  const navigate = useNavigate()
   const cart = useSelector((state) => state.persistedStore.cartReducer);
 
   const orderClickHandler = () => {
+    navigate('/order/2/shipping')
   };
 
   return (

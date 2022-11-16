@@ -7,7 +7,7 @@ const ShippingPage = () => {
 
   return (
     <>
-      <CheckoutSteps step1 step2 />
+      <CheckoutSteps step1 step2/>
       <Shipping/>
     </>
   );

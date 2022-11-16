@@ -114,7 +114,7 @@ const Register = () => {
           </div>
         </div>
         <div className={classes.btn}>
-          <SubmitButton text={"რეგისტრაცია"} />
+          <SubmitButton>რეგისტრაცია</SubmitButton>
         </div>
       </form>
     </div>

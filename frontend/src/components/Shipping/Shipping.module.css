@@ -1,6 +1,6 @@
 .container {
   width: 600px;
-  margin: 125px auto 0px;
+  margin: 50px auto 0px;
 }
 
 .container form {
@@ -29,4 +29,9 @@
   font-size: 18px;
   padding-left: 10px;
   width: 65%;
+}
+
+.btn {
+    width: 200px;
+    margin: 12px auto;
 }

@@ -1,0 +1,29 @@
+.container {
+    display: flex;
+    width: 500px;
+    justify-content: space-between;
+    margin: 150px auto 0px;
+}
+
+.link {
+    margin: 10px;
+}
+
+.link a {
+    text-decoration: none;
+    font-size: 20px;
+}
+
+.link h1 {
+    font-size: 20px;
+}
+
+.link#selected a {
+    color: #99c99e;
+    font-weight: 600;
+}
+
+.link#selected h1 {
+    color: #99c99e;
+    font-weight: 600;
+}

@@ -10,6 +10,8 @@ import ProductDetailsPage from "./pages/ProductDetailsPage";
 import ProductUploadPage from "./pages/ProductUploadPage";
 import RegisterPage from "./pages/RegisterPage";
 import ShippingPage from "./pages/ShippingPage";
+import PaymentPage from "./pages/PaymentPage";
+import PlaceOrderPage from "./pages/PlaceOrderPage";
 
 const App = () => {
   return (
@@ -23,7 +25,9 @@ const App = () => {
         <Route path="/register" element={<RegisterPage />}></Route>
         <Route path="/product/upload" element={<ProductUploadPage />}></Route>
         <Route path="/cart" element={<CartPage />}></Route>
-        <Route path="/shipping" element={<ShippingPage />}></Route>
+        <Route path="/order/:step/shipping" element={<ShippingPage />}></Route>
+        <Route path="/order/:step/payment" element={<PaymentPage />}></Route>
+        <Route path="/order/:step/place" element={<PlaceOrderPage />}></Route>
       </Routes>
     </Router>
   );

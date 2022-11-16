@@ -1,36 +1,41 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 import { cartActions } from "../../redux/ConfigureStore.Cart.js";
+import SubmitButton from "../../ui/SubmitButton/SubmitButton.jsx";
 
-import classes from './Shipping.module.css'
+import classes from "./Shipping.module.css";
 
 const Shipping = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const cart = useSelector((state) => state.persistedStore.cartReducer);
   const { shippingAddress } = cart;
 
-  const [address, setAddress] = useState(shippingAddress?.address);
-  const [city, setCity] = useState(shippingAddress?.city);
-  const [postalCode, setPostalCode] = useState(shippingAddress?.postalCode);
-  const [country, setCountry] = useState(shippingAddress?.country);
-
-  const dispatch = useDispatch();
+  const [address, setAddress] = useState(shippingAddress?.address || "");
+  const [city, setCity] = useState(shippingAddress?.city || "");
+  const [postalCode, setPostalCode] = useState(
+    shippingAddress?.postalCode || ""
+  );
+  const [country, setCountry] = useState(shippingAddress?.country || "");
 
   const submitHandler = (e) => {
     e.preventDefault();
-    dispatch(cartActions.setAddress({ address, city, postalCode, country }));
+    dispatch(cartActions.saveShippingAddress({ address, city, postalCode, country }));
+    navigate("/order/3/payment");
   };
+
   return (
     <div className={classes.container}>
-      <h1>Shipping</h1>
-      <form>
+      <form onSubmit={submitHandler}>
         <div className={classes.input}>
           <label htmlFor="firstName">მისამართი</label>
           <input
             value={address}
             onChange={(e) => setAddress(e.target.value)}
             type="text"
-            placeholder="სახელი"
+            placeholder="მისამართი"
           />
         </div>
         <div className={classes.input}>
@@ -59,6 +64,9 @@ const Shipping = () => {
             type="text"
             placeholder="ქვეყანა"
           />
+        </div>
+        <div className={classes.btn}>
+          <SubmitButton>შემდეგი</SubmitButton>
         </div>
       </form>
     </div>
