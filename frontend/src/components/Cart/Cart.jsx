@@ -8,13 +8,16 @@ import TotalPrice from "../../helpers/TotalPrice/TotalPrice";
 import classes from "./Cart.module.css";
 
 const Cart = () => {
-  const cart = useSelector((state) => state.persistedStore.cartReducer.items);
+  const cart = useSelector((state) => state.persistedStore.cartReducer);
+
+  const orderClickHandler = () => {
+  };
 
   return (
     <div className={classes.container}>
       <h1 className={classes.header}>CART</h1>
       <div className={classes.items}>
-        {cart.map((item, index) => (
+        {cart?.items.map((item, index) => (
           <div key={index}>
             <SectionDivider />
             <div className={classes["item_card"]}>
@@ -30,11 +33,13 @@ const Cart = () => {
           <h1>Total: </h1>
         </div>
         <div className={classes.right}>
-          <h3>{cart.length}</h3>
+          <h3>{cart?.items.length}</h3>
           <TotalPrice id="Bag" />
         </div>
       </div>
-      <button className={classes["order_button"]}>ORDER</button>
+      <button className={classes["order_button"]} onClick={orderClickHandler}>
+        ORDER
+      </button>
     </div>
   );
 };

@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialCartState = { items: [] };
+const initialCartState = { items: [], shippingAddress: {} };
 
 const cartSlice = createSlice({
   name: "cart",
@@ -19,12 +19,16 @@ const cartSlice = createSlice({
     },
     decreaseQuantity(state, action) {
       const index = itemIndex(state, action);
-      if(state.items[index].cartQuantity > 1) state.items[index].cartQuantity -= 1;
-      else state.items.splice(index, 1)
+      if (state.items[index].cartQuantity > 1)
+        state.items[index].cartQuantity -= 1;
+      else state.items.splice(index, 1);
     },
     emptyCart(state, action) {
-      state.items = []
-    }
+      state.items = [];
+    },
+    saveShippingAddress(state, action) {
+      state.shippingAddress = action.payload;
+    },
   },
 });
 

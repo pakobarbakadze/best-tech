@@ -1,0 +1,32 @@
+.container {
+  width: 600px;
+  margin: 125px auto 0px;
+}
+
+.container form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.container label {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.input {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0;
+}
+
+.input input {
+  height: 20px;
+  border: 2px solid #e2e2e2;
+  border-radius: 15px;
+  background-color: #f7f7f7;
+  color: #777777;
+  font-size: 18px;
+  padding-left: 10px;
+  width: 65%;
+}

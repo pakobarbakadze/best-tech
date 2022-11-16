@@ -1,15 +1,13 @@
-import React from 'react'
+import React from "react";
 
-import ProductUpload from '../components/ProductUpload/ProductUpload'
-import Navbar from '../components/Navbar/Navbar'
+import ProductUpload from "../components/ProductUpload/ProductUpload";
 
 const ProductUploadPage = () => {
   return (
     <>
-    <Navbar/>
-    <ProductUpload/>
+      <ProductUpload />
     </>
-  )
-}
+  );
+};
 
-export default ProductUploadPage
+export default ProductUploadPage;
