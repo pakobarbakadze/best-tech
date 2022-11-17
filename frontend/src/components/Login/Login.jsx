@@ -4,6 +4,8 @@ import axios from "axios";
 
 import classes from "./Login.module.css";
 
+import SubmitButton from "../../ui/SubmitButton/SubmitButton";
+
 import { userActions } from "../../redux/ConfigureStore.User";
 import { useDispatch } from "react-redux";
 
@@ -42,7 +44,7 @@ const Login = () => {
             type="password"
             onChange={(e) => setPassword(e.target.value)}
           />
-          <button>შესვლა</button>
+          <div className={classes.btn}><SubmitButton>შესვლა</SubmitButton></div>
         </form>
       </div>
       <div className={classes.register}>

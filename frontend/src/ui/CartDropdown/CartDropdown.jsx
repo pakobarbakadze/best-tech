@@ -1,23 +1,28 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 import CartItem from "../../components/CartItem/CartItem";
-import TotalPrice from "../../helpers/TotalPrice/TotalPrice";
 
 import classes from "./CartDropdown.module.css";
 
 const CartDropdown = (props) => {
-  const cart = useSelector((state) => state.persistedStore.cartReducer.items);
+  const cart = useSelector((state) => state.persistedStore.cartReducer);
+  const [itemsPrice, setItemsPrice] = useState(cart?.itemsPrice || 0)
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    setItemsPrice(cart?.itemsPrice)
+  }, [cart])
+  
 
   const viewBagClickHandler = () => {
     navigate(`/cart`)
     props.changeState()
   }
 
-  if (cart?.length === 0)
+  if (cart?.items.length === 0)
     return (
       <div className={classes.container}>
         <h1 className={classes.empty}>Cart is empty</h1>
@@ -27,10 +32,10 @@ const CartDropdown = (props) => {
   return (
     <div className={classes.container}>
       <h1 className={classes.header}>
-        <span>My bag</span>, {cart.length} items
+        <span>My bag</span>, {cart?.items.length} items
       </h1>
       <div className={classes.items}>
-        {cart?.map((item, index) =>(
+        {cart?.items.map((item, index) =>(
           <CartItem
           key={index}
           item={item}
@@ -40,7 +45,7 @@ const CartDropdown = (props) => {
       <div className={classes.footer}>
         <div className={classes.price}>
           <h1>Total</h1>
-          <TotalPrice id="CartDropdown"/>
+          <h2>{itemsPrice}</h2>
         </div>
         <div className={classes.buttons}>
           <button

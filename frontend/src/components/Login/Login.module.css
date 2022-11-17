@@ -34,20 +34,6 @@
   outline: none;
 }
 
-.form button {
-  font-size: 20px;
-  height: 32px;
-  width: 250px;
-  margin: 30px auto;
-  border: 2px solid #e2e2e2;
-  border-radius: 15px;
-}
-
-.form button:hover {
-  cursor: pointer;
-  background-color: #e2e2e2;
-}
-
 .register {
   width: 500px;
   margin: 50px auto;
@@ -93,4 +79,9 @@
 .register a:hover {
   cursor: pointer;
   background-color: #e2e2e2;
+}
+
+.btn {
+  margin: 20px auto;
+  width: 200px;
 }

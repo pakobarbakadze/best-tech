@@ -5,6 +5,8 @@ import { useSelector } from "react-redux";
 
 import classes from "./ProductUpload.module.css";
 
+import SubmitButton from "../../ui/SubmitButton/SubmitButton";
+
 const ProductUpload = () => {
   const initData = {
     name: "",
@@ -16,7 +18,7 @@ const ProductUpload = () => {
   };
   const [formData, setFormData] = useState(initData);
 
-  const user = useSelector((state) => state.presistedUser.userReducer.user);
+  const user = useSelector((state) => state.persistedStore.userReducer.user);
 
   const inputHandler = (e) => {
     if (e.target.id !== "images") {
@@ -98,7 +100,7 @@ const ProductUpload = () => {
           onChange={(e) => inputHandler(e)}
           value={formData.price}
         />
-        <button>ატვირთვა</button>
+        <div className={classes.btn}><SubmitButton>ატვირთვა</SubmitButton></div>
       </form>
     </div>
   );

@@ -1,6 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialCartState = { items: [], shippingAddress: {}, paymentMethod: ""};
+const initialCartState = {
+  items: [],
+  itemsPrice: 0.0,
+  shippingAddress: {},
+  paymentMethod: "",
+};
 
 const cartSlice = createSlice({
   name: "cart",
@@ -9,22 +14,34 @@ const cartSlice = createSlice({
     addToCart(state, action) {
       const index = itemIndex(state, action);
 
-      if (index !== -1)
+      state.itemsPrice += action.payload.price * action.payload.cartQuantity;
+
+      if (index !== -1) {
         state.items[index].cartQuantity += action.payload.cartQuantity;
-      else state.items.push(action.payload);
+      } else {
+        state.items.push(action.payload);
+      }
     },
     increaseQuantity(state, action) {
       const index = itemIndex(state, action);
       state.items[index].cartQuantity += 1;
+      state.itemsPrice += action.payload.price;
     },
     decreaseQuantity(state, action) {
       const index = itemIndex(state, action);
-      if (state.items[index].cartQuantity > 1)
+      if (state.items[index].cartQuantity > 1) {
         state.items[index].cartQuantity -= 1;
-      else state.items.splice(index, 1);
+        state.itemsPrice -= action.payload.price;
+      } else {
+        state.items.splice(index, 1);
+        state.itemsPrice -= action.payload.price;
+      }
     },
     emptyCart(state, action) {
-      state.items = [];
+      state.items = initialCartState.items;
+      state.paymentMethod = initialCartState.paymentMethod;
+      state.shippingAddress = initialCartState.shippingAddress;
+      state.itemsPrice = 0.0;
     },
     saveShippingAddress(state, action) {
       state.shippingAddress = action.payload;

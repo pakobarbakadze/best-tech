@@ -26,16 +26,7 @@
   padding-left: 10px;
 }
 
-.container form button {
-  font-size: 20px;
-  height: 32px;
-  width: 250px;
-  margin: 30px auto;
-  border: 2px solid #e2e2e2;
-  border-radius: 15px;
-}
-
-.container form button:hover {
-  cursor: pointer;
-  background-color: #e2e2e2;
+.btn {
+  margin: 10px auto;
+  width: 200px;
 }

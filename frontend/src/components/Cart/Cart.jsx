@@ -1,16 +1,21 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from 'react-router-dom'
 
 import SectionDivider from "../../helpers/SectionDivider/SectionDivider";
 import CartItem from "../CartItem/CartItem";
-import TotalPrice from "../../helpers/TotalPrice/TotalPrice";
 
 import classes from "./Cart.module.css";
 
 const Cart = () => {
-  const navigate = useNavigate()
   const cart = useSelector((state) => state.persistedStore.cartReducer);
+  const [itemsPrice, setItemsPrice] = useState(cart?.itemsPrice || 0)
+
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    setItemsPrice(cart?.itemsPrice)
+  }, [cart])
 
   const orderClickHandler = () => {
     navigate('/order/2/shipping')
@@ -37,7 +42,7 @@ const Cart = () => {
         </div>
         <div className={classes.right}>
           <h3>{cart?.items.length}</h3>
-          <TotalPrice id="Bag" />
+          <h3>{itemsPrice}</h3>
         </div>
       </div>
       <button className={classes["order_button"]} onClick={orderClickHandler}>

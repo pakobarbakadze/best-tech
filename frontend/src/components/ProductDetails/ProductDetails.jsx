@@ -62,7 +62,7 @@ const ProductDetails = () => {
               </button>
             </div>
             <div className={classes.btn} onClick={addToCartHandler}>
-              <SubmitButton text="კალათაში დამატება" />
+              <SubmitButton>კალათაში დამატება</SubmitButton>
             </div>
           </div>
         </div>
