@@ -53,7 +53,7 @@ const Navbar = () => {
         {profileDropDown && (
           <ProfileDropdown changeState={profileStateHandler} />
         )}
-        {cartDropdown && <CartDropdown></CartDropdown>}
+        {cartDropdown && <CartDropdown changeState={cartDropdownStateHandler}></CartDropdown>}
       </div>
     </div>
   );

@@ -7,10 +7,15 @@ import TotalPrice from "../../helpers/TotalPrice/TotalPrice";
 
 import classes from "./CartDropdown.module.css";
 
-const CartDropdown = () => {
+const CartDropdown = (props) => {
   const cart = useSelector((state) => state.persistedStore.cartReducer.items);
 
   const navigate = useNavigate();
+
+  const viewBagClickHandler = () => {
+    navigate(`/cart`)
+    props.changeState()
+  }
 
   if (cart?.length === 0)
     return (
@@ -40,7 +45,7 @@ const CartDropdown = () => {
         <div className={classes.buttons}>
           <button
             className={classes["view_bag"]}
-            onClick={() => navigate(`/cart`)}
+            onClick={viewBagClickHandler}
           >
             VIEW BAG
           </button>
