@@ -9,9 +9,29 @@
 }
 
 .order {
+  width: 200px;
   display: flex;
   margin-bottom: 16px;
   justify-content: flex-start;
+}
+
+.order h1 {
+  font-size: 24px;
+  margin: auto 0px;
+}
+
+.order h3 {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.order ul {
+  width: 100%;
+}
+
+.order li {
+  display: flex;
+  justify-content: space-between;
 }
 
 .order_button {
@@ -27,17 +47,6 @@
 
 .order_button:hover {
   cursor: pointer;
-}
-
-.left h1 {
-  font-size: 24px;
-  margin-bottom: 10px;
-}
-
-.right h3 {
-  font-size: 24px;
-  font-weight: 700;
-  margin-bottom: 10px;
 }
 
 .right {

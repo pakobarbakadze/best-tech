@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
-import { useNavigate } from 'react-router-dom'
+import { useNavigate } from "react-router-dom";
 
 import SectionDivider from "../../helpers/SectionDivider/SectionDivider";
 import CartItem from "../CartItem/CartItem";
@@ -9,16 +9,16 @@ import classes from "./Cart.module.css";
 
 const Cart = () => {
   const cart = useSelector((state) => state.persistedStore.cartReducer);
-  const [itemsPrice, setItemsPrice] = useState(cart?.itemsPrice || 0)
+  const [itemsPrice, setItemsPrice] = useState(cart?.itemsPrice || 0);
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   useEffect(() => {
-    setItemsPrice(cart?.itemsPrice)
-  }, [cart])
+    setItemsPrice(cart?.itemsPrice);
+  }, [cart]);
 
   const orderClickHandler = () => {
-    navigate('/order/2/shipping')
+    navigate("/order/2/shipping");
   };
 
   return (
@@ -36,14 +36,16 @@ const Cart = () => {
         <SectionDivider />
       </div>
       <div className={classes.order}>
-        <div className={classes.left}>
-          <h1>Quantity: </h1>
-          <h1>Total: </h1>
-        </div>
-        <div className={classes.right}>
-          <h3>{cart?.items.length}</h3>
-          <h3>{itemsPrice}</h3>
-        </div>
+        <ul>
+          <li>
+            <h1>Quantity: </h1>
+            <h3>{cart?.items.length}</h3>
+          </li>
+          <li>
+            <h1>Total: </h1>
+            <h3>{`${itemsPrice} ₾`}</h3>
+          </li>
+        </ul>
       </div>
       <button className={classes["order_button"]} onClick={orderClickHandler}>
         ORDER
