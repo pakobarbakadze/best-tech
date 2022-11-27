@@ -45,13 +45,13 @@ const ProductDetails = () => {
       <div className={classes.container}>
         <div className={classes.header}>
           <h1>{product.name}</h1>
-          <h2>{`პროდუქტის კოდი: ${product._id}`}</h2>
+          <h2>{`Product id: ${product._id}`}</h2>
         </div>
         <div className={classes.preview}>
           <img src={product.images[0]} alt="preview" />
-          <h1>{`ფასი: ${product.price}.00ლ`}</h1>
+          <h1>{`Price: ${product.price}.00ლ`}</h1>
           <div className={classes.add}>
-            <h1>რაოდენობა</h1>
+            <h1>Quantity</h1>
             <div className={classes.quantity}>
               <button className={classes.dec} onClick={decHandler}>
                 -
@@ -62,7 +62,7 @@ const ProductDetails = () => {
               </button>
             </div>
             <div className={classes.btn} onClick={addToCartHandler}>
-              <SubmitButton>კალათაში დამატება</SubmitButton>
+              <SubmitButton>Add to cart</SubmitButton>
             </div>
           </div>
         </div>

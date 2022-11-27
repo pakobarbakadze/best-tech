@@ -30,7 +30,7 @@ const CategoriesDropdown = () => {
         onClick={() => setCategoriesDropdown(!caregoriesDropdown)}
         className={classes.drop}
       >
-        კატეგორიები
+        Categories
       </div>
       {caregoriesDropdown && (
         <ul className={classes.list}>

@@ -33,12 +33,12 @@ const ProfileDropdown = (props) => {
       <ul className={classes.options}>
         {user?.userData.isAdmin && (
           <li>
-            <Link to="/product/upload">პროდუქტის ატვირთვა</Link>
+            <Link to="/product/upload">Upload product</Link>
           </li>
         )}
-        {!user?.userData.isAdmin && <li>პროფილი</li>}
-        <li>შეკვეთების ისტორია</li>
-        <li onClick={signoutClickHandler}>გასვლა</li>
+        {!user?.userData.isAdmin && <li>Profile</li>}
+        <li>Order history</li>
+        <li onClick={signoutClickHandler}>Logout</li>
       </ul>
     </div>
   );

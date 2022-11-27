@@ -35,18 +35,18 @@ const Navbar = () => {
         <Link to="/">Best Tech</Link>
       </div>
       <div className={classes.search}>
-        <input placeholder="რას ეძებთ ?"></input>
-        <button>ძებნა</button>
+        <input placeholder="What are you looking for ?"></input>
+        <button>Search</button>
       </div>
       <div className={classes.menu}>
         <img src={Cart} alt="cart" onClick={cartDropdownStateHandler} className={classes['cart_img']}/>
         {!user?.userData ? (
           <Link to="/login" className={classes.profile}>
-            ავტორიზაცია
+            Authentication
           </Link>
         ) : (
           <div className={classes.profile} onClick={profileStateHandler}>
-            ჩემი ანგარიში
+            Profile
           </div>
         )}
 

@@ -35,26 +35,26 @@ const Login = () => {
   return (
     <div className={classes.container}>
       <div className={classes.login}>
-        <h1>ავტორიზაცია</h1>
+        <h1>Authentication</h1>
         <form className={classes.form} onSubmit={submitHandler}>
-          <label htmlFor="email">ელ. ფოსტა</label>
+          <label htmlFor="email">Mail</label>
           <input type="email" onChange={(e) => setEmail(e.target.value)} />
-          <label htmlFor="password">პაროლი</label>
+          <label htmlFor="password">Password</label>
           <input
             type="password"
             onChange={(e) => setPassword(e.target.value)}
           />
-          <div className={classes.btn}><SubmitButton>შესვლა</SubmitButton></div>
+          <div className={classes.btn}><SubmitButton>Login</SubmitButton></div>
         </form>
       </div>
       <div className={classes.register}>
-        <h1>არ გაქვთ ანგარიში ?</h1>
-        <h2>ახალი მომხმარებლის რეგისტრაცია</h2>
+        <h1>Don't have account ?</h1>
+        <h2>Register new account</h2>
         <h3>
-          პირადი ანგარიშით თქვენ შეძლებთ პროდუქციის კალათაში დამატებას, სახლიდან
-          გაუსვლელად ყიდვას და შეკვეთის სტატუსის შემოწმებას
+          With account you will be able to shop faster, place order on items in your cart,
+          check your order history and many more.
         </h3>
-        <Link to="/register">გაგრძელება</Link>
+        <Link to="/register">Continue</Link>
       </div>
     </div>
   );

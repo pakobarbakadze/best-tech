@@ -30,21 +30,21 @@ const Shipping = () => {
     <div className={classes.container}>
       <form onSubmit={submitHandler}>
         <div className={classes.input}>
-          <label htmlFor="firstName">მისამართი</label>
+          <label htmlFor="firstName">Address</label>
           <input
             value={address}
             onChange={(e) => setAddress(e.target.value)}
             type="text"
-            placeholder="მისამართი"
+            placeholder="Address"
           />
         </div>
         <div className={classes.input}>
-          <label htmlFor="firstName">ქალაქი</label>
+          <label htmlFor="firstName">City</label>
           <input
             value={city}
             onChange={(e) => setCity(e.target.value)}
             type="text"
-            placeholder="ქალაქი"
+            placeholder="City"
           />
         </div>
         <div className={classes.input}>
@@ -57,16 +57,16 @@ const Shipping = () => {
           />
         </div>
         <div className={classes.input}>
-          <label htmlFor="firstName">ქვეყანა</label>
+          <label htmlFor="firstName">Country</label>
           <input
             value={country}
             onChange={(e) => setCountry(e.target.value)}
             type="text"
-            placeholder="ქვეყანა"
+            placeholder="Country"
           />
         </div>
         <div className={classes.btn}>
-          <SubmitButton>შემდეგი</SubmitButton>
+          <SubmitButton>Next</SubmitButton>
         </div>
       </form>
     </div>

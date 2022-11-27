@@ -10,27 +10,27 @@ const CheckoutSteps = ({ step1, step2, step3, step4 }) => {
     <div className={classes.container}>
       <div className={classes.link}>
         {step1 ? (
-          <NavLink to="/login">ავტორიზაცია</NavLink>
+          <NavLink to="/login">Authentication</NavLink>
         ) : (
-          <h1>ავტორიზაცია</h1>
+          <h1>Authentication</h1>
         )}
       </div>
       <div className={classes.link} id={step === "2" ? classes.selected : ""}>
         {step2 ? (
-          <NavLink to="/order/2/shipping">შიპინგი</NavLink>
+          <NavLink to="/order/2/shipping">Shipping</NavLink>
         ) : (
-          <h1>შიპინგი</h1>
+          <h1>Shipping</h1>
         )}
       </div>
       <div className={classes.link} id={step === "3" ? classes.selected : ""}>
         {step3 ? (
-          <NavLink to="/order/3/payment">გადახდა</NavLink>
+          <NavLink to="/order/3/payment">Payment</NavLink>
         ) : (
-          <h1>გადახდა</h1>
+          <h1>Payment</h1>
         )}
       </div>
       <div className={classes.link} id={step === "4" ? classes.selected : ""}>
-        {step4 ? <NavLink to="/login">შეკვეტა</NavLink> : <h1>შეკვეთა</h1>}
+        {step4 ? <NavLink to="/login">Order</NavLink> : <h1>Order</h1>}
       </div>
     </div>
   );
