@@ -9,6 +9,7 @@ import classes from "./Cart.module.css";
 
 const Cart = () => {
   const cart = useSelector((state) => state.persistedStore.cartReducer);
+  const user = useSelector((state) => state.persistedStore.userReducer.user);
   const [itemsPrice, setItemsPrice] = useState(cart?.itemsPrice || 0);
 
   const navigate = useNavigate();
@@ -18,7 +19,8 @@ const Cart = () => {
   }, [cart]);
 
   const orderClickHandler = () => {
-    navigate("/order/2/shipping");
+    if (user.userData) navigate("/order/2/shipping");
+    else navigate("/login");
   };
 
   return (

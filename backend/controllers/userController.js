@@ -8,6 +8,7 @@ const authUser = async (req, res) => {
   try {
     const user = await User.findByCredentials(email, password);
     const token = await user.generateAuthToken();
+    delete user._doc.password;
     res.send({ userData: user, token });
   } catch (e) {
     res.status(400).send(e);

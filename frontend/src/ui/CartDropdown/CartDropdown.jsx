@@ -8,19 +8,24 @@ import classes from "./CartDropdown.module.css";
 
 const CartDropdown = (props) => {
   const cart = useSelector((state) => state.persistedStore.cartReducer);
-  const [itemsPrice, setItemsPrice] = useState(cart?.itemsPrice || 0)
+  const user = useSelector((state) => state.persistedStore.userReducer.user);
+  const [itemsPrice, setItemsPrice] = useState(cart?.itemsPrice || 0);
 
   const navigate = useNavigate();
 
   useEffect(() => {
-    setItemsPrice(cart?.itemsPrice)
-  }, [cart])
-  
+    setItemsPrice(cart?.itemsPrice);
+  }, [cart]);
 
   const viewBagClickHandler = () => {
-    navigate(`/cart`)
-    props.changeState()
-  }
+    navigate(`/cart`);
+    props.changeState();
+  };
+
+  const orderClickHandler = () => {
+    if (user.userData) navigate("/order/2/shipping");
+    else navigate("/login");
+  };
 
   if (cart?.items.length === 0)
     return (
@@ -35,11 +40,8 @@ const CartDropdown = (props) => {
         <span>My bag</span>, {cart?.items.length} items
       </h1>
       <div className={classes.items}>
-        {cart?.items.map((item, index) =>(
-          <CartItem
-          key={index}
-          item={item}
-        ></CartItem>
+        {cart?.items.map((item, index) => (
+          <CartItem key={index} item={item}></CartItem>
         ))}
       </div>
       <div className={classes.footer}>
@@ -48,13 +50,10 @@ const CartDropdown = (props) => {
           <h2>{itemsPrice}</h2>
         </div>
         <div className={classes.buttons}>
-          <button
-            className={classes["view_bag"]}
-            onClick={viewBagClickHandler}
-          >
+          <button className={classes["view_bag"]} onClick={viewBagClickHandler}>
             VIEW BAG
           </button>
-          <button>CHECK OUT</button>
+          <button onClick={orderClickHandler}>CHECK OUT</button>
         </div>
       </div>
     </div>
