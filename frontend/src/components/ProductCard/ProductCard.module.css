@@ -1,8 +1,6 @@
-.container {
-  width: 20%;
-  height: 400px;
-  box-sizing: border-box;
-  padding: 10px;
+.card {
+  flex: 0 1 calc(20% - 2em);
+  margin: 1em;
 }
 
 .info {
@@ -16,7 +14,7 @@
 
 .info img {
   width: 80%;
-  height: 80%;
+  aspect-ratio: 2/3;
   align-items: center;
   margin: 40px auto;
   object-fit: contain;
@@ -34,4 +32,16 @@
   font-weight: 700;
   color: #99c99e;
   margin: auto auto 20px;
+}
+
+@media screen and (max-width: 1024px){
+  .card {
+    flex: 0 1 calc(100% / 3 - 2em);
+  }
+}
+
+@media screen and (max-width: 1024px){
+  .card {
+    flex: 0 1 calc(100% / 2 - 2em);
+  }
 }

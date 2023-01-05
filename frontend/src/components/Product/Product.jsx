@@ -30,13 +30,13 @@ const Product = () => {
   if (filteredList?.length !== 0)
     return (
       <div className={classes.container}>
-        {filteredList ? (
-          filteredList.map((product) => (
-            <ProductCard key={product._id} product={product}></ProductCard>
-          ))
-        ) : (
-          <h1>loading</h1>
-        )}
+        <div className={classes.cards}>
+          {filteredList ? (
+            filteredList.map((product) => <ProductCard key={product._id} product={product}></ProductCard>)
+          ) : (
+            <h1>loading</h1>
+          )}
+        </div>
       </div>
     );
   else

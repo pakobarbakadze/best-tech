@@ -5,7 +5,7 @@ import classes from "./ProductCard.module.css";
 
 const ProductCard = ({ product }) => {
   return (
-    <div className={classes.container}>
+    <div className={classes.card}>
       <div className={classes.info}>
         <img src={product.images[0]} alt="preview" />
         <Link to={`/product/${product._id}`}>{product.name}</Link>
